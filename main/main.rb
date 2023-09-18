@@ -132,7 +132,6 @@ class Computer
   end
 end
 
-
 class Player
   def get_player_input
     letter = gets.chomp
