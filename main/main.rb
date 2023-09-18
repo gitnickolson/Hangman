@@ -1,22 +1,19 @@
 require "csv"
 
 class Game
-  attr_accessor :com, :player, :turns_left, :feedback, :secret_word, :player_name, :STARTING_TURNS
-  STARTING_TURNS = 12
+  attr_accessor :com, :player, :turns_left, :feedback, :secret_word, :starting_turns
 
   def initialize
     @com = Computer.new
     @player = Player.new
-    @turns_left = STARTING_TURNS
+    @starting_turns = 12
+    @turns_left = starting_turns
   end
 
   def start
-    puts "Welcome to Hangman! What's your name?"
-    @player_name = player.get_name.downcase
+    puts "Welcome to Hangman!"
     @secret_word = com.get_secret_word.chars
-    @feedback = Array.new(secret_word.length, "_")
-
-    print_feedback_array
+    @feedback = Array.new(secret_word.length)
     game_loop
   end
 
@@ -27,36 +24,24 @@ class Game
   end
 
   def game_turn
-    if turns_left == 12
-      puts "Please enter your guess. You can also save(1) the game or load(2) your previous game!"
-    else
-      puts "Please enter your guess"
+    if turns_left == starting_turns
+      secret_word.each_with_index do |letter, index|
+        feedback[index] = "_"
+      end
+      print_feedback_array
     end
 
-    player_input = player.get_player_input
-    case player_input
-    when "1"
-      save_game
-      puts "\nGame succesfully saved!\n\n"
-    when "2"
-      load_game
-      puts "\nGame succesfully loaded!\n\n"
-    end
+    puts "Please enter your guess:"
+    player_guess = player.get_player_input
 
-    correct_letter = false
     secret_word.each_with_index do |letter, index|
-      if player_input == letter
+      if player_guess == letter
         feedback[index] = letter
-        correct_letter = true
       end
     end
-
-    if player_input != "1" and player_input != "2" and correct_letter == false
-      @turns_left -= 1
-    end
-    correct_letter = false
-
     print_feedback_array
+
+    @turns_left -= 1
     game_evaluation
   end
 
@@ -66,54 +51,26 @@ class Game
 
   def game_evaluation
     if feedback == secret_word
-      evaluation_output(:game_won)
+      evaluation_output(0)
       @turns_left = 0
     elsif turns_left == 0
-      evaluation_output(:game_lost)
+      evaluation_output(1)
     else
-      evaluation_output(:still_running)
+      evaluation_output(2)
     end
   end
 
-  def evaluation_output(game_state = :still_running)
-    case game_state
-    when :game_won
+  def evaluation_output(game_won = 2)
+    case game_won
+    when 0
       puts "You win after #{10 - turns_left} turns!"
 
-    when :game_lost
+    when 1
       puts "You lose!"
       puts "The correct word would have been \"#{secret_word.join("")}\""
 
-    when :still_running
+    when 2
       puts "Turns left: #{turns_left}"
-    end
-  end
-
-  def save_game
-    Dir.mkdir("saves") unless Dir.exist?("saves")
-    filename = "saves/#{player_name}_save.txt"
-
-    File.open(filename, 'w') do |file|
-      file.print "#{secret_word.join("")} - "
-      file.print "#{feedback.join("")} - "
-      file.print "#{turns_left}"
-    end
-  end
-
-  def load_game
-    begin
-      save_file = File.open("saves/#{player_name}_save.txt").first
-
-      save_file = save_file.split(" - ")
-      save_file[0] = save_file[0].chars
-      save_file[1] = save_file[1].chars
-      save_file[2] = save_file[2].to_i
-
-      @secret_word = save_file[0]
-      @feedback = save_file[1]
-      @turns_left = save_file[2]
-    rescue
-      puts "You don't have a save file yet!"
     end
   end
 end
@@ -138,11 +95,8 @@ class Player
     letter = gets.chomp
     letter[0]
   end
-
-  def get_name
-    name = gets.chomp
-  end
 end
+
 
 game = Game.new
 game.start
