@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="52f968d1-662d-47ff-9423-d46db6d437d3" name="Changes" comment="The game is now playable&#10;- Next, I'll add a feature to save and load the game&#10;progress">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dictionary.csv" beforeDir="false" afterPath="$PROJECT_DIR$/dictionary.csv" afterDir="false" />
+    <list default="true" id="52f968d1-662d-47ff-9423-d46db6d437d3" name="Changes" comment="The game is now saveable&#10;- You can save your progress&#10;- You can load saved progress">
       <change beforePath="$PROJECT_DIR$/main/main.rb" beforeDir="false" afterPath="$PROJECT_DIR$/main/main.rb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -73,7 +71,7 @@
       <workItem from="1694684488747" duration="13802000" />
       <workItem from="1694764777173" duration="709000" />
       <workItem from="1694785138198" duration="663000" />
-      <workItem from="1695021344148" duration="5667000" />
+      <workItem from="1695021344148" duration="6157000" />
     </task>
     <task id="LOCAL-00001" summary=".gitignore edited">
       <option name="closed" value="true" />
@@ -91,7 +89,23 @@
       <option name="project" value="LOCAL" />
       <updated>1694698480321</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="The game is now saveable&#10;- You can save your progress&#10;- You can load saved progress">
+      <option name="closed" value="true" />
+      <created>1695027474873</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1695027474873</updated>
+    </task>
+    <task id="LOCAL-00004" summary="The game is now saveable&#10;- You can save your progress&#10;- You can load saved progress">
+      <option name="closed" value="true" />
+      <created>1695027495164</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1695027495164</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -100,9 +114,10 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value=".gitignore edited" />
     <MESSAGE value="The game is now playable&#10;- Next, I'll add a feature to save and load the game&#10;progress" />
-    <option name="LAST_COMMIT_MESSAGE" value="The game is now playable&#10;- Next, I'll add a feature to save and load the game&#10;progress" />
+    <MESSAGE value="The game is now saveable&#10;- You can save your progress&#10;- You can load saved progress" />
+    <option name="LAST_COMMIT_MESSAGE" value="The game is now saveable&#10;- You can save your progress&#10;- You can load saved progress" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/Hangman@main.rcov" NAME="main Coverage Results" MODIFIED="1695027412024" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="Hangman" />
+    <SUITE FILE_PATH="coverage/Hangman@main.rcov" NAME="main Coverage Results" MODIFIED="1695027891167" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="Hangman" />
   </component>
 </project>

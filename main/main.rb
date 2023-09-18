@@ -37,20 +37,26 @@ class Game
     case player_input
     when "1"
       save_game
+      puts "\nGame succesfully saved!\n\n"
     when "2"
       load_game
+      puts "\nGame succesfully loaded!\n\n"
     end
 
+    correct_letter = false
     secret_word.each_with_index do |letter, index|
       if player_input == letter
         feedback[index] = letter
+        correct_letter = true
       end
     end
-    print_feedback_array
 
-    if player_input != "1" and player_input != "2"
+    if player_input != "1" and player_input != "2" and correct_letter == false
       @turns_left -= 1
     end
+    correct_letter = false
+
+    print_feedback_array
     game_evaluation
   end
 
@@ -61,7 +67,7 @@ class Game
   def game_evaluation
     if feedback == secret_word
       evaluation_output(:game_won)
-      turns_left = 0
+      @turns_left = 0
     elsif turns_left == 0
       evaluation_output(:game_lost)
     else
