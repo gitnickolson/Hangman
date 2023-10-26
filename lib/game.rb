@@ -4,7 +4,7 @@ require_relative 'computer'
 require_relative 'player'
 
 class Game
-  attr_accessor :com, :player, :turns_left, :feedback, :secret_word, :player_name, :STARTING_TURNS
+  attr_accessor :com, :player, :turns_left, :feedback, :secret_word, :player_name, :STARTING_TURNS, :used_guesses
 
   STARTING_TURNS = 12
 
@@ -12,6 +12,7 @@ class Game
     @com = Computer.new
     @player = Player.new
     @turns_left = STARTING_TURNS
+    @used_guesses = []
   end
 
   def start
@@ -53,8 +54,12 @@ class Game
       end
     end
 
-    @turns_left -= 1 if (player_input != '1') && (player_input != '2') && (correct_letter == false)
+    if (player_input != '1') && (player_input != '2') && (correct_letter == false) && !used_guesses.include?(player_input)
+      @turns_left -= 1
+    end
     correct_letter = false
+
+    used_guesses << player_input unless used_guesses.include?(player_input)
 
     print_feedback_array
     game_evaluation
