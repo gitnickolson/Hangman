@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Player
   def get_player_input
     letter = gets.chomp
