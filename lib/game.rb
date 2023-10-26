@@ -40,10 +40,8 @@ class Game
     case player_input
     when '1'
       save_game
-      puts "\nGame succesfully saved!\n\n"
     when '2'
       load_game
-      puts "\nGame succesfully loaded!\n\n"
     end
 
     correct_letter = false
@@ -103,6 +101,8 @@ class Game
       file.print "#{feedback.join('')} - "
       file.print turns_left.to_s
     end
+
+    puts "\nGame succesfully saved!\n\n"
   end
 
   def load_game
@@ -116,6 +116,8 @@ class Game
     @secret_word = save_file[0]
     @feedback = save_file[1]
     @turns_left = save_file[2]
+
+    puts "\nGame succesfully loaded!\n\n"
   rescue StandardError
     puts "You don't have a save file yet!"
   end
