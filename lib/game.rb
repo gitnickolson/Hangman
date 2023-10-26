@@ -78,7 +78,7 @@ class Game
   def evaluation_output(game_state = :still_running)
     case game_state
     when :game_won
-      puts "You win after #{10 - turns_left} turns!"
+      puts "You win after #{12 - turns_left} turns!"
 
     when :game_lost
       puts 'You lose!'
